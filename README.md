@@ -55,7 +55,7 @@ app.get('/admin', (req, res) => {
     expect(req.auth.reviewer()).toEqual(false)
 ```
 
-### Setting up and extending sample
+### Setting up and extending example
 ```js
 //Adding custome roles for the application
 const ROLES = {
