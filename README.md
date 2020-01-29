@@ -1,8 +1,8 @@
 # keycloak-roles-connect
 Connect-like middleware for authorization and roles management. 
-This module can be easily extended to handler any kind of JWT Roles specification and clients.
-However the base config and implementation takes in consideration the way that keyclock:Oauth2 generate
-roles by clients in JWT tokens.
+This module can be easily extended to handler any kind of JWT roles specification by client.
+However the base config and implementation takes in consideration the keyclock:Oauth2 generated
+roles in the JWT.
 
 > This middleware does NOT `verify` JWT tokens, It is intended to be use for services that stand behind an `api-gateway` that handler authentication.
 
@@ -71,10 +71,10 @@ const KConnect = require('keycloak-connect-roles')
 const { Auth } = KConnect
 
 /**
- * Extending Auth class to add the isReviewer shortcut, and to overwrite
- * default behavior of isSysAdmin.
- * Please take a look to the samples folder for an example of how 
- * the module can be configure 
+ * Extending Auth class to add isReviewer method and overwriting
+ * the default behavior of isSysAdmin.
+ * In the samples folder there is a complete demo of how this module
+ * module may be extend for custom needs.
 */
 class CustomAuth extends Auth {
   isReviewer () {
