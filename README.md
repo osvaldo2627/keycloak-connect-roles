@@ -8,7 +8,7 @@ roles in the JWT.
 
 ## Basic Usage
 ```js
-const { middleware, protect } = require('keycloak-connect-roles')
+const { middleware, protect } = require('keycloak-connect-roles').init()
 app.use(middleware)
 
 // middleware based role check
@@ -49,13 +49,7 @@ app.get('/admin', (req, res) => {
 })
 ```
 
-### Checks Shortcuts
-```js
-    expect(req.auth.isSysAdmin()).toEqual(true)
-    expect(req.auth.reviewer()).toEqual(false)
-```
-
-### Setting up and extending example
+### Setting up and extending to create a custom module
 ```js
 //Adding custome roles for the application
 const ROLES = {
@@ -73,8 +67,6 @@ const { Auth } = KConnect
 /**
  * Extending Auth class to add isReviewer method and overwriting
  * the default behavior of isSysAdmin.
- * In the samples folder there is a complete demo of how this module
- * module may be extend for custom needs.
 */
 class CustomAuth extends Auth {
   isReviewer () {
@@ -86,4 +78,12 @@ class CustomAuth extends Auth {
   }
 }
 
+module.exports = KConnect.init({ ROLES, CLIENT_ID, Auth: CustomAuth })
+
+```
+
+### Checks Shortcuts
+```js
+    expect(req.auth.isSysAdmin()).toEqual(true)
+    expect(req.auth.reviewer()).toEqual(false)
 ```

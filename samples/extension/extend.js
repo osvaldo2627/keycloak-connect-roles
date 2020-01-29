@@ -20,5 +20,4 @@ class CustomAuth extends Auth {
   }
 }
 
-const init = (config) => Object.assign(KConnect, config)
-module.exports = init({ ROLES, CLIENT_ID, Auth: CustomAuth })
+module.exports = KConnect.init({ ROLES, CLIENT_ID, Auth: CustomAuth })
