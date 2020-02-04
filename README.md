@@ -1,10 +1,10 @@
 # keycloak-roles-connect
-Connect-like middleware for authorization and roles management. 
+Connect-like middleware for authorization and roles management.  
 This module can be easily extended to handler any kind of JWT roles specification by client.
 However the base config and implementation takes in consideration the keyclock:Oauth2 generated
 roles in the JWT.
 
-> This middleware does NOT `verify` JWT tokens, It is intended to be use for services that stand behind an `api-gateway` that handler authentication.
+> This middleware does NOT `verify` JWT tokens, it is intended to be use for services that stand behind an `api-gateway` or `proxy` that handles the JWT token verification.
 
 ## Basic Usage
 ```js
@@ -49,7 +49,7 @@ app.get('/admin', (req, res) => {
 })
 ```
 
-### Setting up and extending to create a custom module
+### Setting up and extending the Auth class for custom use cases
 ```js
 //Adding custome roles for the application
 const ROLES = {
@@ -84,6 +84,6 @@ module.exports = KConnect.init({ ROLES, CLIENT_ID, Auth: CustomAuth })
 
 ### Checks Shortcuts
 ```js
-    expect(req.auth.isSysAdmin()).toEqual(true)
-    expect(req.auth.reviewer()).toEqual(false)
+expect(req.auth.isSysAdmin()).toEqual(true)
+expect(req.auth.isReviewer()).toEqual(false)
 ```
