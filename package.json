@@ -1,6 +1,6 @@
 {
   "name": "keycloak-connect-roles",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Connect like middleware for keycloack roles checking",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,9 @@
     "roles"
   ],
   "author": "Osvaldo Aguilar Lazurique <osvaldo2627@gmail.com>",
+  "contributors": [
+    "Rolando Santamaria Maso <kyberneees@gmail.com>"
+  ],
   "license": "MIT",
   "dependencies": {
     "@hapi/boom": "^7.4.2",
